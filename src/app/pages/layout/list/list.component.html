@@ -1,0 +1,35 @@
+<nb-card>
+  <nb-card-header>
+    <h3 class="text-center">Consulta PQR</h3>
+  </nb-card-header>
+
+  <nb-card-body>
+    <form class="d-flex mb-2 ">
+      <input class="form-control me-2 mr-1" type="search" (keyup)=search($event) placeholder="Buscar por nombre de usuario o tipo de PQR" aria-label="Search">
+     
+    </form>
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let order of Peticiones | filter: textoBuscar:'tipopqr'" class="col-md-6 mb-3">
+        <div class="card text-center">
+          <div class="card-header text-left">
+            <strong>Número de radicado :</strong> #{{ order.id }}
+          </div>
+          <div class="card-body">
+            <p class="card-title text-left">Usuario : <strong>{{ order.customerName }}</strong></p>
+            <p class="card-text text-left">Peticion : {{ order.descripcion }}</p>
+            <p class="card-text text-left ">Respuestas : {{ order.respuestasAdmin }}</p>
+            <p class="card-text text-left ">Tipo PQR : <strong>{{ order.tipopqr }}</strong></p>
+          </div>
+          <div class="card-footer text-muted" >
+            {{ order.date.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nb-card-body>
+
+
+  
+</nb-card>

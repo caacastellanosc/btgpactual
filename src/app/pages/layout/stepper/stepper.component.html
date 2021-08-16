@@ -1,0 +1,65 @@
+<nb-card>
+  <nb-card-header>
+    <h3 class="text-center">Registro PQR</h3>
+  </nb-card-header>
+
+  <nb-card-body>
+  <div class="container">
+    <nb-card>
+    
+      <nb-card-body>
+
+      <div class="container">
+        <form class="needs-validation" [formGroup]="this.newsService.form">
+          <div  class="form-row">
+            <div class="col-md-3 mb-3">
+              <label >Nombre Usuario</label>
+              <input type="text" class="form-control" id="nombre" formControlName="customerName">
+            </div>
+            <div class="col-md-3 mb-3">
+              <label >Fecha </label>
+
+                <input class="form-control" id="fecha" formControlName="date" nbInput placeholder="Min Max Picker" [nbDatepicker]="picker">
+                <nb-datepicker #picker [min]="min" [max]="max"></nb-datepicker>
+
+            </div>  
+            <div class="col-md-3 mb-3">
+              <label for="inputState">Tipo PQR</label>
+                  <select id="inputState" class="form-control" (change)="selectChangeHandler($event)">
+                    <option value="Peticion">Peticion</option>
+                    <option value="Queja">Queja</option>
+                    <option value="Reclamo">Reclamo</option>
+       
+                  </select>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="inputresp">Fue atendida por el area Administrativa</label>
+                  <select id="inputresp" class="form-control" (change)="selectChangeResponses($event)">
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
+                  </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label >Peticion</label>
+              <textarea class="form-control " id="peticion" formControlName="descripcion" placeholder="Escriba su peticon" required></textarea>
+            </div>
+          </div>
+          <button class="btn btn-primary"  (click)="onSubmit()">Registrar Peticion</button>
+        </form>
+      </div>
+      </nb-card-body>
+    
+    
+      
+    </nb-card>
+  </div>
+  </nb-card-body>
+
+
+  
+</nb-card>
+
+
+
