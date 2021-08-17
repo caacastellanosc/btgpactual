@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
       this.newsService.getPeticiones()
       .subscribe(res => {
         this.Peticiones = res
-        console.log(res);
+
         
       });}
       getsearchPqr(query: string) {
@@ -35,13 +35,12 @@ export class ListComponent implements OnInit {
         this.newsService.getUserDoc("a")
         .subscribe(res => {
     
-          console.log(res);
+
           
         });}  
 
       search(event: any){
         this.textoBuscar = event.target.value;
-        //this.getsearchPqr("a");
 
       }
 

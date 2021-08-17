@@ -77,8 +77,8 @@ export class StepperComponent implements OnInit {
                 public newsService: NewsService,
                 private toastr: NbToastrService,
                 protected dateService: NbDateService<Date>) {
-                  this.min = this.dateService.addDay(this.dateService.today(), -5);
-                  this.max = this.dateService.addDay(this.dateService.today(), 5);
+                  this.min = this.dateService.addDay(this.dateService.today(), -500);
+                  this.max = this.dateService.addDay(this.dateService.today(), -5);
                   const data = this.service.getData();
                   this.source.load(data);
   }
@@ -96,9 +96,7 @@ this.inicialize();
     
     this.newsService.getPeticiones()
     .subscribe(res => {
-      this.Peticiones = res
-      console.log(res);
-      
+      this.Peticiones = res      
     });}
     
 
@@ -131,7 +129,6 @@ this.inicialize();
     let data = this.newsService.form.value;
     let respuesta= "";
     this.myId = uuid.v4();
-    console.log(data);
     if(this.selectedPeticion == "" || this.selectedPeticion== undefined){
       this.selectedPeticion = "Peticion"
     }
@@ -142,8 +139,6 @@ this.inicialize();
     respuesta = this.randomtextrespuestas(this.atendida);
     
     data = {id:this.myId,...data,tipopqr:this.selectedPeticion,respuestasAdmin:respuesta};
-    console.log(data);
-
     
     
     this.newsService.createPeticion(data)
